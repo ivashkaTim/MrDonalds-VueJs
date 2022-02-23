@@ -1,0 +1,9 @@
+.card-product{
+  width: 600px;
+  height: 600px;
+  border:1px solid black;
+  &__image{
+    height: 200px;
+    width: 100%;
+  }
+}
