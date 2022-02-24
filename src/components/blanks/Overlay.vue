@@ -1,8 +1,7 @@
 <template lang="pug">
-  button.b-button(
-    v-on:click ="onClick"
+  .b-overlay(
+    v-on:click="onClick"
   )
-    slot
 </template>
 
 <script>
@@ -12,7 +11,7 @@ export default {
     return {}
   },
   methods: {
-    onClick() {
+    onClick(){
       this.$emit('click')
     }
   },

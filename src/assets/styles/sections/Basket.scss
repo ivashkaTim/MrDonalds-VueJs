@@ -1,0 +1,68 @@
+.basket {
+  background-color: #FFFFFF;
+  width: 380px;
+
+  &__container {
+    padding: 20px 20px 0 0;
+    min-height: 1000px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-family: Pacifico;
+    font-size: 39px;
+    line-height: 68px;
+    color: #000000;
+    font-weight: 400;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-family: Roboto;
+    font-size: 21px;
+    line-height: 25px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  &__button {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  &__list {
+    font-family: Roboto;
+    font-size: 21px;
+    line-height: 25px;
+    color: #000000;
+    width: 100%;
+  }
+
+  &__item {
+    td {
+      padding-top: 15px;
+      padding-left: 10px;
+    }
+  }
+  &__image {
+    cursor: pointer;
+  }
+
+  &__total {
+    display: flex;
+    font-family: Roboto;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    margin-top: auto;
+    justify-content: space-between;
+    margin-top: auto;
+
+  }
+}

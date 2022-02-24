@@ -7,45 +7,36 @@
   padding: 0;
   box-sizing: border-box;
 }
+li{
+  list-style-type: none;
+}
 
 body {
   font-family: 'Roboto', sans-serif;
+  position: relative;
+  background-color: #E5E5E5;
 }
 
 .container {
   max-width: 1440px;
   padding: 0 25px;
   margin: 0 auto;
+  background-color: #FFFFFF;
 }
 
-.menu {
-  &__container {
-    max-width: 1060px;
-    margin-left: auto;
-    margin-right: -25px;
-  }
-  &__sections{
-    margin-left: 70px;
-  }
-  &__banner {
-    width: 100%;
-    height: 210px;
-    position: relative;
-    margin-bottom: 17px;
-    img {
-      object-fit: cover;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
-    }
+.main{
+  &__container{
+    display: flex;
   }
 }
+
 
 @import "@/assets/styles/blanks/Logo";
 @import "@/assets/styles/blanks/Login";
 @import "@/assets/styles/sections/Header";
 @import "@/assets/styles/sections/Section-products";
+@import "@/assets/styles/sections/Overlay";
+@import "@/assets/styles/sections/Basket";
+@import "@/assets/styles/sections/Menu";
 @import "@/assets/styles/UI/Button";
 @import "@/assets/styles/blanks/Card-product";

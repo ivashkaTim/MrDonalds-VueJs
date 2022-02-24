@@ -4,6 +4,7 @@
     ul.__list
       li.__item(
       v-for="item in items"
+      v-on:click="onClick(item.id)"
       )
         .__text
           p {{item.name}}
@@ -21,10 +22,15 @@ export default {
     title: String,
     items: Array,
   },
+
   data() {
     return {}
   },
-  methods: {},
+  methods: {
+    onClick(id) {
+      this.$emit('click', id)
+    }
+  },
   computed: {},
   components: {},
 }
