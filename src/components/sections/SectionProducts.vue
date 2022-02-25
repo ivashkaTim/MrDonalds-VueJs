@@ -16,6 +16,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     section: Object,
@@ -32,6 +33,8 @@ export default {
     }
   },
   computed: {},
-  components: {},
+  components: {
+
+  },
 }
 </script>

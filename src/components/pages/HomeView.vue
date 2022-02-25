@@ -8,31 +8,27 @@
           .__container
             .__banner
               img(src='images/utility/banner.png' alt="banner")
-            section-products-component.__sections(
+            sectionProducts-component.__sections(
               v-for="(items, title) in sections"
               :key="title"
               :title="title"
               :items ="items"
               v-on:click="setActiveItem($event, title)"
             )
-    overlay-component(
+    modal-component(
       v-if="activeItem"
-      @click="onCloseCardProduct"
-    )
-    card-product-component(
-      v-if="activeItem"
-      @click="changeCount"
     )
 
 </template>
 
 <script>
 import Header from '@/components/sections/Header.vue'
-import SectionProducts from "@/components/sections/Section-products";
-import CardProduct from "@/components/blanks/Card-product";
+import SectionProducts from "@/components/sections/SectionProducts";
+import CardProduct from "@/components/blanks/CardProduct";
 import Basket from "@/components/sections/Basket";
 import Overlay from "@/components/blanks/Overlay";
-import menuItems, {changeActiveItem, closeCardProduct, changeActiveItemCount} from "@/services/menuItems";
+import menuItems, {changeActiveItem} from "@/services/menuItems";
+import Modal from "@/components/sections/Modal";
 
 
 export default {
@@ -40,13 +36,6 @@ export default {
   methods: {
     setActiveItem(event, title) {
       changeActiveItem(event, title)
-    },
-    onCloseCardProduct() {
-      closeCardProduct()
-    },
-    changeCount(count){
-      changeActiveItemCount(count)
-      this.onCloseCardProduct()
     },
   },
   computed: {
@@ -59,10 +48,11 @@ export default {
   },
   components: {
     'header-component': Header,
-    'section-products-component': SectionProducts,
-    'card-product-component': CardProduct,
+    'sectionProducts-component': SectionProducts,
+    'cardProduct-component': CardProduct,
     'basket-component': Basket,
-    'overlay-component': Overlay
+    'overlay-component': Overlay,
+    'modal-component': Modal,
   }
 }
 </script>

@@ -32,6 +32,7 @@
 <script>
 import Button from "@/components/UI/Button";
 import menuItems from "@/services/menuItems";
+import Overlay from "@/components/blanks/Overlay";
 
 export default {
   data() {
@@ -42,7 +43,6 @@ export default {
   props: {},
   methods: {
     onClick(count) {
-      console.log(count, 'card')
       this.$emit('click', count)
     },
     changeValue(sign) {
@@ -57,12 +57,13 @@ export default {
     activeItem() {
       return menuItems.activeItem
     },
-    totalPrice(){
+    totalPrice() {
       return this.count * this.activeItem.price
     }
   },
   components: {
     'button-component': Button,
+    'overlay-components': Overlay,
   },
 }
 </script>

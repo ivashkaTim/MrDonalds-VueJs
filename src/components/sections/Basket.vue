@@ -4,6 +4,7 @@
       h2.__title ваш заказ
       p.__subtitle(
         v-if="!filteredMenuItems.length"
+
       ) Вы еще ничего не выбрали
       table.__list(
         v-else
@@ -20,8 +21,8 @@
             img(src='@/assets/images/icons/delete.svg', alt="delete")
       .__total
         span.__total-name ИТОГО
-        span.__total-name 5
-        span.__total-name 750 ₽
+        span.__total-name {{changeTotalPrice.totalCount}}
+        span.__total-name {{changeTotalPrice.totalPrice}} ₽
       button-component.button--praimary.__button(
         v-on:click ="onClick(count)"
       ) Оформить
@@ -38,6 +39,7 @@ export default {
     }
   },
   computed: {
+
     filteredMenuItems() {
       const products = []
       Object.entries(menuItems.sections).forEach(([, items]) => {
@@ -47,9 +49,23 @@ export default {
           }
         })
       })
-
       return products
-    }
+    },
+    changeTotalPrice() {
+      const total = {
+        totalCount: 0,
+        totalPrice: 0,
+      }
+      Object.entries(menuItems.sections).forEach(([, items]) => {
+        items.forEach(item => {
+          if (item.count > 0) {
+            total.totalCount += item.count
+            total.totalPrice += (item.count * item.price)
+          }
+        })
+      })
+      return total
+    },
   },
   components: {
     'button-component': Button

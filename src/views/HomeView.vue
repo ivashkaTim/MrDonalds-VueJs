@@ -1,9 +1,9 @@
 <template lang="pug">
-  ToDoApp-component
+  HomeView-component
 </template>
 
 <script>
-  import ToDoApp from '@/components/pages/mrBurgers.vue'
+  import HomeView from '@/components/pages/HomeView.vue'
 
   export default {
     data() {
@@ -12,7 +12,7 @@
      }
     },
     components: {
-      'ToDoApp-component': ToDoApp
+      'HomeView-component': HomeView
     }
   }
 </script>
