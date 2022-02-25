@@ -29,6 +29,7 @@
 
 <script>
 import menuItems from "@/services/menuItems";
+import Button from "@/components/UI/Button";
 
 export default {
   methods: {
@@ -46,9 +47,12 @@ export default {
           }
         })
       })
+
       return products
     }
   },
-  components: {},
+  components: {
+    'button-component': Button
+  },
 }
 </script>

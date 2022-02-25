@@ -54,9 +54,6 @@ export default {
     },
   },
   computed: {
-    sections() {
-      return menuItems.sections
-    },
     activeItem() {
       return menuItems.activeItem
     },

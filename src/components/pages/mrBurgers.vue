@@ -17,7 +17,7 @@
             )
     overlay-component(
       v-if="activeItem"
-      @click="onCloseCardProduct()"
+      @click="onCloseCardProduct"
     )
     card-product-component(
       v-if="activeItem"
@@ -36,6 +36,7 @@ import menuItems, {changeActiveItem, closeCardProduct, changeActiveItemCount} fr
 
 
 export default {
+
   methods: {
     setActiveItem(event, title) {
       changeActiveItem(event, title)
@@ -46,7 +47,7 @@ export default {
     changeCount(count){
       changeActiveItemCount(count)
       this.onCloseCardProduct()
-    }
+    },
   },
   computed: {
     sections() {
