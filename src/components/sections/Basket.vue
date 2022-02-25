@@ -24,16 +24,21 @@
         span.__total-name {{changeTotalPrice.totalCount}}
         span.__total-name {{changeTotalPrice.totalPrice}} ₽
       button-component.button--praimary.__button(
-        v-on:click ="onClick(count)"
+        v-on:click ="onClick"
       ) Оформить
 </template>
 
 <script>
-import menuItems from "@/services/menuItems";
 import Button from "@/components/UI/Button";
 
 export default {
+  props: {
+    section: Object,
+  },
   methods: {
+    onClick() {
+      console.log(this.section)
+    },
     deleteItem(item) {
       item.count = 0
     }
@@ -42,7 +47,7 @@ export default {
 
     filteredMenuItems() {
       const products = []
-      Object.entries(menuItems.sections).forEach(([, items]) => {
+      Object.entries(this.section).forEach(([, items]) => {
         items.forEach(item => {
           if (item.count > 0) {
             products.unshift(item)
@@ -51,18 +56,15 @@ export default {
       })
       return products
     },
+
     changeTotalPrice() {
       const total = {
         totalCount: 0,
         totalPrice: 0,
       }
-      Object.entries(menuItems.sections).forEach(([, items]) => {
-        items.forEach(item => {
-          if (item.count > 0) {
-            total.totalCount += item.count
-            total.totalPrice += (item.count * item.price)
-          }
-        })
+      this.filteredMenuItems.forEach(item => {
+        total.totalCount += item.count
+        total.totalPrice += (item.count * item.price)
       })
       return total
     },

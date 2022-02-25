@@ -2,13 +2,13 @@
   .b-card-product
     .__image
       img(
-        :src="`images/utility/${activeItem.image}.png`"
+        :src="`images/utility/${activeProduct.image}.png`"
         alt='photo'
       )
     .__container
       .__info
-        span {{activeItem.name}}
-        span  {{activeItem.price}}₽
+        span {{activeProduct.name}}
+        span  {{activeProduct.price}}₽
       .__count
         p Количество:
         .__form
@@ -31,16 +31,17 @@
 
 <script>
 import Button from "@/components/UI/Button";
-import menuItems from "@/services/menuItems";
 import Overlay from "@/components/blanks/Overlay";
 
 export default {
+  props: {
+    activeProduct: Object
+  },
   data() {
     return {
       count: 1,
     }
   },
-  props: {},
   methods: {
     onClick(count) {
       this.$emit('click', count)
@@ -54,11 +55,8 @@ export default {
     },
   },
   computed: {
-    activeItem() {
-      return menuItems.activeItem
-    },
     totalPrice() {
-      return this.count * this.activeItem.price
+      return this.count * this.activeProduct.price
     }
   },
   components: {

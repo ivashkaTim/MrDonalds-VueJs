@@ -1,37 +1,33 @@
 <template lang="pug">
   .b-modal
     overlay-component(
-      v-on:click="onCloseCardProduct"
+      v-on:click=""
     )
     cardProduct-component(
-      v-on:click="changeCount"
+      v-on:click="onclick"
+      :activeProduct ="activeProduct"
     )
 
 </template>
 
 <script>
-import menuItems, {closeCardProduct, changeActiveItemCount} from "@/services/menuItems";
 import CardProduct from "@/components/blanks/CardProduct";
 import Overlay from "@/components/blanks/Overlay";
 
 export default {
-  props: {},
+  props: {
+    activeProduct: Object
+  },
   data() {
     return {}
   },
   methods: {
-    onCloseCardProduct() {
-      closeCardProduct()
+    onclick(count) {
+      this.$emit('click', count)
     },
-    changeCount(count){
-        changeActiveItemCount(count)
-        this.onCloseCardProduct()
-    },
+
   },
   computed: {
-    activeItem() {
-      return menuItems.activeItem
-    },
   },
   components: {
     'cardProduct-component': CardProduct,

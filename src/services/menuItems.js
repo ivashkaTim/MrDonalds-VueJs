@@ -2,7 +2,7 @@ import Vue from "vue";
 
 const menuItems = Vue.observable({
     sections: {
-        'Бурегры': [
+        'Бургеры': [
             {id: 1, name: 'JS Burger', price: 250, image: 'JS', count:0},
             {id: 2, name: 'Borsh Burger', price: 400, image: 'Borsh', count:0},
             {id: 3, name: 'Freckles Burger', price: 350, image: 'Freckles', count:0},
