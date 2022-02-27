@@ -76,6 +76,10 @@ export default {
     },
   },
   computed: {
+    sections(){
+      return this.$store.state.sections
+    },
+
   },
   components: {
     'header-component': Header,
