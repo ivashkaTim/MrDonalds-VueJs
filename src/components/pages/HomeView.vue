@@ -11,7 +11,7 @@
             .__banner
               img(src='images/utility/banner.png' alt="banner")
             sectionProducts-component.__sections(
-              v-for="(items, title) in section"
+              v-for="(items, title) in sections"
               :key="title"
               :title="title"
               :items ="items"
@@ -32,6 +32,7 @@ import CardProduct from "@/components/blanks/CardProduct";
 import Basket from "@/components/sections/Basket";
 import Overlay from "@/components/blanks/Overlay";
 import Modal from "@/components/sections/Modal";
+import {mapGetters, mapMutations} from 'vuex';
 
 
 export default {
@@ -76,9 +77,7 @@ export default {
     },
   },
   computed: {
-    sections(){
-      return this.$store.state.sections
-    },
+    ...mapGetters(['sections']),
 
   },
   components: {
