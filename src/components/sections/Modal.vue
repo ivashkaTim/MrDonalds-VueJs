@@ -1,34 +1,28 @@
 <template lang="pug">
   .b-modal
     overlay-component(
-      v-on:click=""
+      v-on:click="closeCardProduct"
     )
-    cardProduct-component(
-      v-on:click="onclick"
-      :activeProduct ="activeProduct"
-    )
+    cardProduct-component
 
 </template>
 
 <script>
 import CardProduct from "@/components/blanks/CardProduct";
 import Overlay from "@/components/blanks/Overlay";
+import {mapActions} from "vuex";
 
 export default {
-  props: {
-    activeProduct: Object
-  },
   data() {
     return {}
   },
   methods: {
-    onclick(count) {
-      this.$emit('click', count)
-    },
+    ...mapActions({
+      closeCardProduct: 'products/closeCardProduct',
+    }),
 
   },
-  computed: {
-  },
+  computed: {},
   components: {
     'cardProduct-component': CardProduct,
     'overlay-component': Overlay,

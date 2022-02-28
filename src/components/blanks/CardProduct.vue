@@ -16,8 +16,7 @@
             v-on:click="changeValue('minus')"
           ) -
           input.__input(
-            type = 'number'
-            v-model="count")
+            v-model.number="count")
           button-component.button--secondary.__button-count-minus(
             v-on:click="changeValue('plus')"
           ) +
@@ -25,24 +24,25 @@
         span Итоговая цена:
         span.__total-price {{totalPrice}} ₽
       button-component.button--praimary.__button(
-        v-on:click ="onClick(count)"
+        v-on:click ="changeActiveProductCount(count)"
       ) Добавить
 </template>
 
 <script>
 import Button from "@/components/UI/Button";
 import Overlay from "@/components/blanks/Overlay";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
-  props: {
-    activeProduct: Object
-  },
   data() {
     return {
       count: 1,
     }
   },
   methods: {
+    ...mapActions({
+      changeActiveProductCount:'products/changeActiveProductCount'
+    }),
     onClick(count) {
       this.$emit('click', count)
     },
@@ -57,7 +57,10 @@ export default {
   computed: {
     totalPrice() {
       return this.count * this.activeProduct.price
-    }
+    },
+    ...mapGetters({
+      activeProduct: 'products/activeProduct'
+    })
   },
   components: {
     'button-component': Button,

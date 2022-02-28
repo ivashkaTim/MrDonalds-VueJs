@@ -31,7 +31,8 @@ export default {
       this.$emit('click', id)
     }
   },
-  computed: {},
+  computed: {
+  },
   components: {
 
   },

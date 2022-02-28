@@ -16,58 +16,39 @@
           td.__count {{item.count}}
           td.__price {{item.price * item.count}} ₽
           td.__image(
-            v-on:click="deleteItem(item)"
+            v-on:click="deleteProduct(item.id)"
           )
             img(src='@/assets/images/icons/delete.svg', alt="delete")
       .__total
         span.__total-name ИТОГО
-        span.__total-name {{changeTotalPrice.totalCount}}
-        span.__total-name {{changeTotalPrice.totalPrice}} ₽
-      button-component.button--praimary.__button(
-        v-on:click ="onClick"
-      ) Оформить
+        span.__total-name {{getTotalPriceAndCount.totalCount}}
+        span.__total-name {{getTotalPriceAndCount.totalPrice}} ₽
+      button-component.button--praimary.__button Оформить
 </template>
 
 <script>
 import Button from "@/components/UI/Button";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   props: {
     section: Object,
   },
   methods: {
-    onClick() {
-      console.log(this.section)
-    },
+    ...mapActions({
+      deleteProduct:'products/deleteProduct'
+    }),
     deleteItem(item) {
       item.count = 0
     }
   },
   computed: {
+    ...mapGetters({
+      sections: 'products/sections',
+      filteredMenuItems:'products/filteredMenuItems',
+      getTotalPriceAndCount: 'products/getTotalPriceAndCount',
+    }),
 
-    filteredMenuItems() {
-      const products = []
-      Object.entries(this.section).forEach(([, items]) => {
-        items.forEach(item => {
-          if (item.count > 0) {
-            products.unshift(item)
-          }
-        })
-      })
-      return products
-    },
-
-    changeTotalPrice() {
-      const total = {
-        totalCount: 0,
-        totalPrice: 0,
-      }
-      this.filteredMenuItems.forEach(item => {
-        total.totalCount += item.count
-        total.totalPrice += (item.count * item.price)
-      })
-      return total
-    },
   },
   components: {
     'button-component': Button
